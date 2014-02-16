@@ -7,6 +7,7 @@ describe Sjekksum do
   spec_values = {
     damm:        9,
     isbn10:      "X",
+    isbn13:      3,
     luhn:        5,
     upc:         3,
     verhoeff:    4,

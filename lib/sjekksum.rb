@@ -2,6 +2,7 @@ require "sjekksum/version"
 require "sjekksum/shared"
 require "sjekksum/damm"
 require "sjekksum/isbn10"
+require "sjekksum/isbn13"
 require "sjekksum/luhn"
 require "sjekksum/upc"
 require "sjekksum/verhoeff"
@@ -46,6 +47,22 @@ module Sjekksum
     ISBN10.of number
   end
   alias_method :isbn10, :isbn10_of
+
+  #
+  # Calculates ISBN-13 checksum
+  #
+  # @example
+  #   Sjekksum.isbn13("978-0-306-40615-") #=> 7
+  #
+  # @see Sjekksum::ISBN13#of
+  #
+  # @param  number [Integer, String] number for which the checksum should be calculated
+  #
+  # @return [Integer, String] calculated checksum
+  def isbn13_of number
+    ISBN13.of number
+  end
+  alias_method :isbn13, :isbn13_of
 
   #
   # Calculates Luhn checksum
@@ -161,6 +178,22 @@ module Sjekksum
   alias_method :isbn10?, :valid_isbn10?
 
   #
+  # ISBN-13 validation of provided number
+  #
+  # @example
+  #   Sjekksum.isbn13?("978-0-306-40615-7") #=> true
+  #
+  # @see Sjekksum::ISBN13#valid?
+  #
+  # @param  number [Integer, String] number with included checksum
+  #
+  # @return [Boolean]
+  def valid_isbn13? number
+    ISBN13.valid? number
+  end
+  alias_method :isbn13?, :valid_isbn13?
+
+  #
   # Luhn validation of provided number
   #
   # @example
@@ -272,6 +305,22 @@ module Sjekksum
     ISBN10.convert number
   end
   alias_method :isbn10!, :make_isbn10
+
+  #
+  # Transforms a number by appending the ISBN-13 checksum digit
+  #
+  # @example
+  #   Sjekksum.isbn13("978-0-306-40615-") #=> "978-0-306-40615-7"
+  #
+  # @see Sjekksum::ISBN13#convert
+  #
+  # @param  number [Integer, String] number without a checksum
+  #
+  # @return [Integer, String] final number including the checksum
+  def make_isbn13 number
+    ISBN13.convert number
+  end
+  alias_method :isbn13!, :make_isbn13
 
   #
   # Transforms a number by appending the Luhn checksum digit
