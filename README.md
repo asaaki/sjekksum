@@ -20,7 +20,7 @@ For the string inputs all non-integer bytes are thrown away:
 [0,1,2,3,4,5,6,7,8,9] # internal digits representation
 ```
 
-Shortly: This gem tries to follow the [UNIX philosophy](http://en.wikipedia.org/wiki/Unix_philosophy) in parts: »Write programs that do one thing and do it well.«
+Shortly: This gem tries to follow the [UNIX philosophy](http://en.wikipedia.org/wiki/Unix_philosophy) in parts: _»Write programs that do one thing and do it well.«_
 
 
 
@@ -41,7 +41,7 @@ bundle
 Or install it yourself as:
 
 ```shell
-gem install damm
+gem install sjekksum
 ```
 
 
