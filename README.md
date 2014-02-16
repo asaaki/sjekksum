@@ -54,6 +54,10 @@ Sjekksum.damm(572)              #=> 4
 Sjekksum.damm!(572)             #=> 5724
 Sjekksum.damm?(5724)            #=> true
 
+Sjekksum.isbn10("147743025")    #=> 3
+Sjekksum.isbn10!("147743025")   #=> "1477430253"
+Sjekksum.isbn10?("1477430253")  #=> true
+
 Sjekksum.luhn(7992739871)       #=> 3
 Sjekksum.luhn!(7992739871)      #=> 79927398713
 Sjekksum.luhn?(79927398713)     #=> true
