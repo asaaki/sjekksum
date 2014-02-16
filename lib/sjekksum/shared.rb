@@ -14,7 +14,7 @@ module Sjekksum
     end
 
     def convert_number_to_digits number
-      number.to_s.bytes.reject{ |b| b < 48 || b > 57 }.map{|b| b.chr.to_i }
+      number.to_s.scan(/\d/).map{ |b| b.chr.to_i }
     end
 
     def convert_to_int number
