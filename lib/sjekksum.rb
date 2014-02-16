@@ -1,6 +1,7 @@
 require "sjekksum/version"
 require "sjekksum/shared"
 require "sjekksum/damm"
+require "sjekksum/isbn10"
 require "sjekksum/luhn"
 require "sjekksum/upc"
 require "sjekksum/verhoeff"
@@ -28,6 +29,23 @@ module Sjekksum
     Damm.of number
   end
   alias_method :damm, :damm_of
+
+  #
+  # Calculates ISBN 10 checksum
+  #
+  # @example
+  #   Sjekksum::ISBN10.of("147743025") #=> 3
+  #   Sjekksum::ISBN10.of("193435600") #=> "X"
+  #
+  # @see Sjekksum::Damm#of
+  #
+  # @param  number [Integer, String] number for which the checksum should be calculated
+  #
+  # @return [Integer, String] calculated checksum
+  def isbn10_of number
+    ISBN10.of number
+  end
+  alias_method :isbn10, :isbn10_of
 
   #
   # Calculates Luhn checksum
@@ -126,6 +144,23 @@ module Sjekksum
   alias_method :damm?, :valid_damm?
 
   #
+  # ISBN 10 validation of provided number
+  #
+  # @example
+  #   Sjekksum::ISBN10.valid?("1477430253") #=> true
+  #   Sjekksum::ISBN10.valid?("193435600X") #=> true
+  #
+  # @see Sjekksum::ISBN10#valid?
+  #
+  # @param  number [Integer, String] number with included checksum
+  #
+  # @return [Boolean]
+  def valid_isbn10? number
+    ISBN10.valid? number
+  end
+  alias_method :isbn10?, :valid_isbn10?
+
+  #
   # Luhn validation of provided number
   #
   # @example
@@ -220,6 +255,23 @@ module Sjekksum
     Damm.convert number
   end
   alias_method :damm!, :make_damm
+
+  #
+  # Transforms a number by appending the ISBN 10 checksum digit
+  #
+  # @example
+  #   Sjekksum::ISBN10.convert("147743025") #=> "1477430253"
+  #   Sjekksum::ISBN10.convert("193435600") #=> "193435600X"
+  #
+  # @see Sjekksum::ISBN10#convert
+  #
+  # @param  number [Integer, String] number without a checksum
+  #
+  # @return [Integer, String] final number including the checksum
+  def make_isbn10 number
+    ISBN10.convert number
+  end
+  alias_method :isbn10!, :make_isbn10
 
   #
   # Transforms a number by appending the Luhn checksum digit
