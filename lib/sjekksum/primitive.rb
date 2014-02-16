@@ -14,12 +14,12 @@ module Sjekksum
     # @example
     #   Sjekksum::Primitive.of(232323) #=> 6
     #
-    # @param  number [Integer] number for which the checksum should be calculated
+    # @param  number [Integer, String] number for which the checksum should be calculated
     #
     # @return [Integer] calculated checksum
     def of number
       raise_on_type_mismatch number
-      number % 9
+      convert_to_int(number) % 9
     end
     alias_method :checksum, :of
 
@@ -29,12 +29,13 @@ module Sjekksum
     # @example
     #   Sjekksum::Primitive.valid?(232323) #=> true
     #
-    # @param  number [Integer] number with included checksum
+    # @param  number [Integer, String] number with included checksum
     #
     # @return [Boolean]
     def valid? number
       raise_on_type_mismatch number
-      self.of(number.div(10)) == (number % 10)
+      num, check = split_number(number)
+      self.of(num) == check
     end
     alias_method :is_valid?, :valid?
 
@@ -44,12 +45,12 @@ module Sjekksum
     # @example
     #   Sjekksum::Primitive.convert(232323) #=> 2323236
     #
-    # @param  number [Integer] number without a checksum
+    # @param  number [Integer, String] number without a checksum
     #
-    # @return [Integer] final number including the checksum
+    # @return [Integer, String] final number including the checksum
     def convert number
       raise_on_type_mismatch number
-      (number * 10) + self.of(number)
+      typed_conversion number
     end
     alias_method :transform, :convert
 

@@ -14,15 +14,15 @@ module Sjekksum
     # @example
     #   Sjekksum::Luhn.of(7992739871) #=> 3
     #
-    # @param  number [Integer] number for which the checksum should be calculated
+    # @param  number [Integer, String] number for which the checksum should be calculated
     #
     # @return [Integer] calculated checksum
     def of number
       raise_on_type_mismatch number
-      digits = number.to_s.chars.map(&:to_i)
+      digits = convert_number_to_digits(number)
       sum    = digits.reverse.map.with_index do |digit, idx|
         idx.even? ? (digit * 2).divmod(10).reduce(&:+) : digit
-      end.reverse.reduce(&:+)
+      end.reduce(&:+)
 
       (10 - sum % 10) % 10
     end
@@ -34,12 +34,13 @@ module Sjekksum
     # @example
     #   Sjekksum::Luhn.valid?(79927398713) #=> true
     #
-    # @param  number [Integer] number with included checksum
+    # @param  number [Integer, String] number with included checksum
     #
     # @return [Boolean]
     def valid? number
       raise_on_type_mismatch number
-      self.of(number.div(10)) == (number % 10)
+      num, check = split_number(number)
+      self.of(num) == check
     end
     alias_method :is_valid?, :valid?
 
@@ -49,12 +50,12 @@ module Sjekksum
     # @example
     #   Sjekksum::Luhn.convert(7992739871) #=> 79927398713
     #
-    # @param  number [Integer] number without a checksum
+    # @param  number [Integer, String] number without a checksum
     #
-    # @return [Integer] final number including the checksum
+    # @return [Integer, String] final number including the checksum
     def convert number
       raise_on_type_mismatch number
-      (number * 10) + self.of(number)
+      typed_conversion number
     end
     alias_method :transform, :convert
 

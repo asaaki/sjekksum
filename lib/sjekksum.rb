@@ -20,7 +20,7 @@ module Sjekksum
   #
   # @see Sjekksum::Damm#of
   #
-  # @param  number [Integer] number for which the checksum should be calculated
+  # @param  number [Integer, String] number for which the checksum should be calculated
   #
   # @return [Integer] calculated checksum
   def damm_of number
@@ -36,7 +36,7 @@ module Sjekksum
   #
   # @see Sjekksum::Luhn#of
   #
-  # @param  number [Integer] number for which the checksum should be calculated
+  # @param  number [Integer, String] number for which the checksum should be calculated
   #
   # @return [Integer] calculated checksum
   def luhn_of number
@@ -52,7 +52,7 @@ module Sjekksum
   #
   # @see Sjekksum::Verhoeff#of
   #
-  # @param  number [Integer] number for which the checksum should be calculated
+  # @param  number [Integer, String] number for which the checksum should be calculated
   #
   # @return [Integer] calculated checksum
   def verhoeff_of number
@@ -68,7 +68,7 @@ module Sjekksum
   #
   # @see Sjekksum::Primitive#of
   #
-  # @param  number [Integer] number for which the checksum should be calculated
+  # @param  number [Integer, String] number for which the checksum should be calculated
   #
   # @return [Integer] calculated checksum
   def primitive_of number
@@ -84,7 +84,7 @@ module Sjekksum
   #
   # @see Sjekksum::Primitive97#of
   #
-  # @param  number [Integer] number for which the checksum should be calculated
+  # @param  number [Integer, String] number for which the checksum should be calculated
   #
   # @return [Integer] calculated checksum
   def primitive97_of number
@@ -100,7 +100,7 @@ module Sjekksum
   #
   # @see Sjekksum::Damm#valid?
   #
-  # @param  number [Integer] number with included checksum
+  # @param  number [Integer, String] number with included checksum
   #
   # @return [Boolean]
   def valid_damm? number
@@ -116,7 +116,7 @@ module Sjekksum
   #
   # @see Sjekksum::Luhn#valid?
   #
-  # @param  number [Integer] number with included checksum
+  # @param  number [Integer, String] number with included checksum
   #
   # @return [Boolean]
   def valid_luhn? number
@@ -132,7 +132,7 @@ module Sjekksum
   #
   # @see Sjekksum::Verhoeff#valid?
   #
-  # @param  number [Integer] number with included checksum
+  # @param  number [Integer, String] number with included checksum
   #
   # @return [Boolean]
   def valid_verhoeff? number
@@ -148,7 +148,7 @@ module Sjekksum
   #
   # @see Sjekksum::Primitive#valid?
   #
-  # @param  number [Integer] number with included checksum
+  # @param  number [Integer, String] number with included checksum
   #
   # @return [Boolean]
   def valid_primitive? number
@@ -164,7 +164,7 @@ module Sjekksum
   #
   # @see Sjekksum::Primitive97#valid?
   #
-  # @param  number [Integer] number with included checksum
+  # @param  number [Integer, String] number with included checksum
   #
   # @return [Boolean]
   def valid_primitive97? number
@@ -180,9 +180,9 @@ module Sjekksum
   #
   # @see Sjekksum::Damm#convert
   #
-  # @param  number [Integer] number without a checksum
+  # @param  number [Integer, String] number without a checksum
   #
-  # @return [Integer] final number including the checksum
+  # @return [Integer, String] final number including the checksum
   def make_damm number
     Damm.convert number
   end
@@ -196,9 +196,9 @@ module Sjekksum
   #
   # @see Sjekksum::Luhn#convert
   #
-  # @param  number [Integer] number without a checksum
+  # @param  number [Integer, String] number without a checksum
   #
-  # @return [Integer] final number including the checksum
+  # @return [Integer, String] final number including the checksum
   def make_luhn number
     Luhn.convert number
   end
@@ -212,9 +212,9 @@ module Sjekksum
   #
   # @see Sjekksum::Verhoeff#convert
   #
-  # @param  number [Integer] number without a checksum
+  # @param  number [Integer, String] number without a checksum
   #
-  # @return [Integer] final number including the checksum
+  # @return [Integer, String] final number including the checksum
   def make_verhoeff number
     Verhoeff.convert number
   end
@@ -228,9 +228,9 @@ module Sjekksum
   #
   # @see Sjekksum::Primitive#convert
   #
-  # @param  number [Integer] number without a checksum
+  # @param  number [Integer, String] number without a checksum
   #
-  # @return [Integer] final number including the checksum
+  # @return [Integer, String] final number including the checksum
   def make_primitive number
     Primitive.convert number
   end
@@ -244,9 +244,9 @@ module Sjekksum
   #
   # @see Sjekksum::Primitive97#convert
   #
-  # @param  number [Integer] number without a checksum
+  # @param  number [Integer, String] number without a checksum
   #
-  # @return [Integer] final number including the checksum
+  # @return [Integer, String] final number including the checksum
   def make_primitive97 number
     Primitive97.convert number
   end
