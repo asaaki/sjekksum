@@ -3,6 +3,8 @@ require "sjekksum/shared"
 require "sjekksum/damm"
 require "sjekksum/luhn"
 require "sjekksum/verhoeff"
+require "sjekksum/primitive"
+require "sjekksum/primitive97"
 
 #
 # Base module with convenient shortcuts
@@ -59,6 +61,38 @@ module Sjekksum
   alias_method :verhoeff, :verhoeff_of
 
   #
+  # Calculates Primitive checksum
+  #
+  # @example
+  #   Sjekksum.primitive(232323) #=> 6
+  #
+  # @see Sjekksum::Primitive#of
+  #
+  # @param  number [Integer] number for which the checksum should be calculated
+  #
+  # @return [Integer] calculated checksum
+  def primitive_of number
+    Primitive.of number
+  end
+  alias_method :primitive, :primitive_of
+
+  #
+  # Calculates Primitive97 checksum
+  #
+  # @example
+  #   Sjekksum.primitive97(232323) #=> 6
+  #
+  # @see Sjekksum::Primitive97#of
+  #
+  # @param  number [Integer] number for which the checksum should be calculated
+  #
+  # @return [Integer] calculated checksum
+  def primitive97_of number
+    Primitive97.of number
+  end
+  alias_method :primitive97, :primitive97_of
+
+  #
   # Damm validation of provided number
   #
   # @example
@@ -107,6 +141,38 @@ module Sjekksum
   alias_method :verhoeff?, :valid_verhoeff?
 
   #
+  # Primitive validation of provided number
+  #
+  # @example
+  #   Sjekksum.primitive?(2323236) #=> true
+  #
+  # @see Sjekksum::Primitive#valid?
+  #
+  # @param  number [Integer] number with included checksum
+  #
+  # @return [Boolean]
+  def valid_primitive? number
+    Primitive.valid? number
+  end
+  alias_method :primitive?, :valid_primitive?
+
+  #
+  # Primitive97 validation of provided number
+  #
+  # @example
+  #   Sjekksum.primitive97?(2323235) #=> true
+  #
+  # @see Sjekksum::Primitive97#valid?
+  #
+  # @param  number [Integer] number with included checksum
+  #
+  # @return [Boolean]
+  def valid_primitive97? number
+    Primitive97.valid? number
+  end
+  alias_method :primitive97?, :valid_primitive97?
+
+  #
   # Transforms a number by appending the Damm checksum digit
   #
   # @example
@@ -153,5 +219,37 @@ module Sjekksum
     Verhoeff.convert number
   end
   alias_method :verhoeff!, :make_verhoeff
+
+  #
+  # Transforms a number by appending the Primitive checksum digit
+  #
+  # @example
+  #   Sjekksum.primitive!(232323) #=> 2323236
+  #
+  # @see Sjekksum::Primitive#convert
+  #
+  # @param  number [Integer] number without a checksum
+  #
+  # @return [Integer] final number including the checksum
+  def make_primitive number
+    Primitive.convert number
+  end
+  alias_method :primitive!, :make_primitive
+
+  #
+  # Transforms a number by appending the Primitive97 checksum digit
+  #
+  # @example
+  #   Sjekksum.primitive97!(232323) #=> 2323235
+  #
+  # @see Sjekksum::Primitive97#convert
+  #
+  # @param  number [Integer] number without a checksum
+  #
+  # @return [Integer] final number including the checksum
+  def make_primitive97 number
+    Primitive97.convert number
+  end
+  alias_method :primitive97!, :make_primitive97
 
 end
