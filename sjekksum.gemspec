@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Sjekksum::VERSION
   spec.authors       = ["Christoph Grabo"]
   spec.email         = ["chris@dinarrr.com"]
-  spec.summary       = %q{Collection of some checksum/validation algorithms}
-  spec.description   = %q{A gem to provide some checksum algorithms like Luhn, Damm and Verhoeff.}
+  spec.summary       = %q{Collection of some checksum validation algorithms}
+  spec.description   = %q{A gem to provide some checksum algorithms like Damm, Luhn, UPC and Verhoeff.}
   spec.homepage      = "https://github.com/asaaki/sjekksum"
   spec.license       = "MIT"
 

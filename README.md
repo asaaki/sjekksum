@@ -1,6 +1,6 @@
 # Sjekksum [![Gem Version](https://badge.fury.io/rb/sjekksum.png)](http://badge.fury.io/rb/sjekksum) [![Build Status](https://travis-ci.org/asaaki/sjekksum.png?branch=master)](https://travis-ci.org/asaaki/sjekksum)
 
-A gem to provide some checksum algorithms like Luhn, Damm and Verhoeff.
+A gem to provide some checksum algorithms like Damm, Luhn, UPC and Verhoeff.
 
 ----
 
