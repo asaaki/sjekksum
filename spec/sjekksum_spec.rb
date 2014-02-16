@@ -6,6 +6,7 @@ describe Sjekksum do
     input:       12345,
     damm:        9,
     luhn:        5,
+    upc:         7,
     verhoeff:    1,
     primitive:   6,
     primitive97: 8
@@ -41,6 +42,21 @@ describe Sjekksum do
   it "#luhn!" do
     expected = spec_values[:input] * 10 + spec_values[:luhn]
     expect(described_class.luhn!(spec_values[:input])).to eq(expected)
+  end
+
+  it "#upc" do
+    expected = spec_values[:input] * 10 + spec_values[:upc]
+    expect(described_class.upc(spec_values[:input])).to eq(spec_values[:upc])
+  end
+
+  it "#upc?" do
+    value = spec_values[:input] * 10 + spec_values[:upc]
+    expect(described_class.upc?(value)).to be_true
+  end
+
+  it "#upc!" do
+    expected = spec_values[:input] * 10 + spec_values[:upc]
+    expect(described_class.upc!(spec_values[:input])).to eq(expected)
   end
 
   it "#verhoeff" do

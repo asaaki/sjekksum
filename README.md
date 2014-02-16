@@ -44,6 +44,10 @@ Sjekksum.luhn(7992739871)     #=> 3
 Sjekksum.luhn!(7992739871)    #=> 79927398713
 Sjekksum.luhn?(79927398713)   #=> true
 
+Sjekksum.upc("03600024145")   #=> 7
+Sjekksum.upc!("03600024145")  #=> "036000241457"
+Sjekksum.upc?("03600024145")  #=> true
+
 Sjekksum.verhoeff(142857)     #=> 0
 Sjekksum.verhoeff?(1428570)   #=> true
 Sjekksum.verhoeff!(142857)    #=> 1428570

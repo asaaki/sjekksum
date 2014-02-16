@@ -2,6 +2,7 @@ require "sjekksum/version"
 require "sjekksum/shared"
 require "sjekksum/damm"
 require "sjekksum/luhn"
+require "sjekksum/upc"
 require "sjekksum/verhoeff"
 require "sjekksum/primitive"
 require "sjekksum/primitive97"
@@ -43,6 +44,22 @@ module Sjekksum
     Luhn.of number
   end
   alias_method :luhn, :luhn_of
+
+  #
+  # Calculates UPC checksum
+  #
+  # @example
+  #   Sjekksum.upc("03600024145") #=> 7
+  #
+  # @see Sjekksum::UPC#of
+  #
+  # @param  number [Integer, String] number for which the checksum should be calculated
+  #
+  # @return [Integer] calculated checksum
+  def upc_of number
+    UPC.of number
+  end
+  alias_method :upc, :upc_of
 
   #
   # Calculates Verhoeff checksum
@@ -125,6 +142,22 @@ module Sjekksum
   alias_method :luhn?, :valid_luhn?
 
   #
+  # UPC validation of provided number
+  #
+  # @example
+  #   Sjekksum.upc?("036000241457") #=> true
+  #
+  # @see Sjekksum::UPC#valid?
+  #
+  # @param  number [Integer, String] number with included checksum
+  #
+  # @return [Boolean]
+  def valid_upc? number
+    UPC.valid? number
+  end
+  alias_method :upc?, :valid_upc?
+
+  #
   # Verhoeff validation of provided number
   #
   # @example
@@ -203,6 +236,22 @@ module Sjekksum
     Luhn.convert number
   end
   alias_method :luhn!, :make_luhn
+
+  #
+  # Transforms a number by appending the UPC checksum digit
+  #
+  # @example
+  #   Sjekksum.upc!("03600024145") #=> "03600024147"
+  #
+  # @see Sjekksum::UPC#convert
+  #
+  # @param  number [Integer, String] number without a checksum
+  #
+  # @return [Integer, String] final number including the checksum
+  def make_upc number
+    UPC.convert number
+  end
+  alias_method :upc!, :make_upc
 
   #
   # Transforms a number by appending the Verhoeff checksum digit
