@@ -9,7 +9,16 @@ All used algorithms for generating and validating checksums must calculate a sin
 More extensive checksum algorithms like Adler-32, CRC, BSD checksum, SYSV checksum, all hash algorithms and friends are not part of this project.
 Also no advanced algorithms like IBAN and credit card number calculation can be found here due to their nature in these cases more transformations and steps have to be taken.
 Furthermore this gem does not allow any other input type than integers or strings of integer digits to simplify transformations here (so all extended algorithms allowing characters are not included as well).
-For the string inputs all non-integer bytes are thrown away (e. g. `"01-234.567 89" => "0123456789" => [0,1,2,3,4,5,6,7,8,9]`).
+
+For the string inputs all non-integer bytes are thrown away:
+
+```ruby
+"01-234.567 89"
+#=>
+"0123456789" # cleaned string
+#=>
+[0,1,2,3,4,5,6,7,8,9] # internal digits representation
+```
 
 Shortly: This gem tries to follow the [UNIX philosophy](http://en.wikipedia.org/wiki/Unix_philosophy) in parts: »Write programs that do one thing and do it well.«
 
@@ -19,16 +28,21 @@ Shortly: This gem tries to follow the [UNIX philosophy](http://en.wikipedia.org/
 
 Add this line to your application's Gemfile:
 
-    gem "sjekksum"
+```ruby
+gem "sjekksum"
+```
 
 And then execute:
 
-    $ bundle
+```shell
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install damm
-
+```shell
+gem install damm
+```
 
 
 ## Usage
