@@ -10,7 +10,7 @@ describe Sjekksum::Damm do
     [ 4000,   7 ],
     [ 55555,  5 ],
     [ 424242, 0 ],
-    [ 572,    4 ],
+    [ 572,    4 ]
   ]
 
   fail_spec_matrix = [

@@ -10,7 +10,7 @@ describe Sjekksum::Luhn do
     [ 4000,       6 ],
     [ 55555,      7 ],
     [ 424242,     6 ],
-    [ 7992739871, 3 ],
+    [ 7992739871, 3 ]
   ]
 
   fail_spec_matrix = [

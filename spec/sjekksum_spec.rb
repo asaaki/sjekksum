@@ -3,9 +3,9 @@ require "spec_helper"
 describe Sjekksum do
 
   spec_values = {
-    input: 12345,
-    damm: 9,
-    luhn: 5,
+    input:    12345,
+    damm:     9,
+    luhn:     5,
     verhoeff: 1
   }
 
