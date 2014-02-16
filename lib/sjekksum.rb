@@ -1,5 +1,6 @@
 require "sjekksum/version"
 
+require "sjekksum/shared"
 require "sjekksum/damm"
 require "sjekksum/luhn"
 require "sjekksum/verhoeff"
@@ -48,7 +49,7 @@ module Sjekksum
   alias_method :luhn!, :make_luhn
 
   def make_verhoeff input_value
-    Damm.convert input_value
+    Verhoeff.convert input_value
   end
   alias_method :verhoeff!, :make_verhoeff
 
