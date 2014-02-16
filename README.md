@@ -4,7 +4,7 @@ A gem to provide some checksum algorithms like Luhn, Damm and Verhoeff.
 
 ----
 
-All used algorithms for generating and validating checksums must calculate a single check digit only.
+All used algorithms for generating and validating checksums **must calculate a single check digit only.**
 
 More extensive checksum algorithms like Adler-32, CRC, BSD checksum, SYSV checksum, all hash algorithms and friends are not part of this project.
 
