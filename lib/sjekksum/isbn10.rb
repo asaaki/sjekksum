@@ -1,6 +1,6 @@
 module Sjekksum
   #
-  # Module for calculation and validation of ISBN 10 (International Standard Book Number) checksums
+  # Module for calculation and validation of ISBN-10 (International Standard Book Number) checksums
   #
   # @see http://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-10_check_digit_calculation ISBN-10 check digit calculation
   #
@@ -9,7 +9,7 @@ module Sjekksum
     extend Shared
 
     #
-    # Calculates ISBN 10 checksum
+    # Calculates ISBN-10 checksum
     #
     # @example
     #   Sjekksum::ISBN10.of("147743025") #=> 3
@@ -21,16 +21,18 @@ module Sjekksum
     def of number
       raise_on_type_mismatch number
       digits = convert_number_to_digits(number)[0..9]
+
       sum    = digits.reverse_each.with_index.reduce(0) do |check, (digit, idx)|
         check += digit * (idx+2)
       end
+
       check = (11 - sum % 11) % 11
       check == 10 ? "X" : check
     end
     alias_method :checksum, :of
 
     #
-    # ISBN 10 validation of provided number
+    # ISBN-10 validation of provided number
     #
     # @example
     #   Sjekksum::ISBN10.valid?("1477430253") #=> true
@@ -47,7 +49,7 @@ module Sjekksum
     alias_method :is_valid?, :valid?
 
     #
-    # Transforms a number by appending the ISBN 10 checksum digit
+    # Transforms a number by appending the ISBN-10 checksum digit
     #
     # @example
     #   Sjekksum::ISBN10.convert("147743025") #=> "1477430253"

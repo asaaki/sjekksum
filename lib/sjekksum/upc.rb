@@ -23,6 +23,7 @@ module Sjekksum
     def of number
       raise_on_type_mismatch number
       digits = convert_number_to_digits(number)
+
       sum    = digits.map.with_index do |digit, idx|
         idx.even? ? (digit * 3) : digit
       end.reduce(&:+)

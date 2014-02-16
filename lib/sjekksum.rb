@@ -31,13 +31,13 @@ module Sjekksum
   alias_method :damm, :damm_of
 
   #
-  # Calculates ISBN 10 checksum
+  # Calculates ISBN-10 checksum
   #
   # @example
-  #   Sjekksum::ISBN10.of("147743025") #=> 3
-  #   Sjekksum::ISBN10.of("193435600") #=> "X"
+  #   Sjekksum.isbn10("147743025") #=> 3
+  #   Sjekksum.isbn10("193435600") #=> "X"
   #
-  # @see Sjekksum::Damm#of
+  # @see Sjekksum::ISBN10#of
   #
   # @param  number [Integer, String] number for which the checksum should be calculated
   #
@@ -144,11 +144,11 @@ module Sjekksum
   alias_method :damm?, :valid_damm?
 
   #
-  # ISBN 10 validation of provided number
+  # ISBN-10 validation of provided number
   #
   # @example
-  #   Sjekksum::ISBN10.valid?("1477430253") #=> true
-  #   Sjekksum::ISBN10.valid?("193435600X") #=> true
+  #   Sjekksum.isbn10?("1477430253") #=> true
+  #   Sjekksum.isbn10?("193435600X") #=> true
   #
   # @see Sjekksum::ISBN10#valid?
   #
@@ -257,11 +257,11 @@ module Sjekksum
   alias_method :damm!, :make_damm
 
   #
-  # Transforms a number by appending the ISBN 10 checksum digit
+  # Transforms a number by appending the ISBN-10 checksum digit
   #
   # @example
-  #   Sjekksum::ISBN10.convert("147743025") #=> "1477430253"
-  #   Sjekksum::ISBN10.convert("193435600") #=> "193435600X"
+  #   Sjekksum.isbn10!("147743025") #=> "1477430253"
+  #   Sjekksum.isbn10!("193435600") #=> "193435600X"
   #
   # @see Sjekksum::ISBN10#convert
   #

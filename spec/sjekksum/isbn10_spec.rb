@@ -12,14 +12,14 @@ describe Sjekksum::ISBN10 do
     [ 388221591,       7 ],
     [ "359617218",     7 ],
     [ "147743025",     3 ],
-    [ "0-306-40615-",  2 ],
+    [ "0-306-40615-",  2 ]
   ]
 
   fail_spec_matrix = [
     [ 123,             9 ],
     [ "123",           9 ],
     [ "147743025",     9 ],
-    [ "0-306-40615-",  9 ],
+    [ "0-306-40615-",  9 ]
   ]
 
   it_behaves_like "a checksum implementation:", success_spec_matrix, fail_spec_matrix

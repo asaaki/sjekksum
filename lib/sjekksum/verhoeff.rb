@@ -49,6 +49,7 @@ module Sjekksum
     def of number
       raise_on_type_mismatch number
       digits = convert_number_to_digits(number)
+
       INVERSE[digits.reverse_each.with_index.reduce(0) { |check, (digit, idx)|
         d_row = DIHEDRAL_GROUP_D5[check]
         d_row[ PERMUTATION[idx.next % 8][digit] ]
