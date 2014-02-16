@@ -84,6 +84,11 @@ Sjekksum.primitive97?(235695)          #=> true
 ```
 
 
+## Documentation
+
+... can be found at <http://rdoc.info/github/asaaki/sjekksum/master/frames>
+
+
 
 ## License
 
