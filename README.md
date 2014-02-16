@@ -50,29 +50,29 @@ gem install damm
 ```ruby
 require "sjekksum"
 
-Sjekksum.damm(572)            #=> 4
-Sjekksum.damm!(572)           #=> 5724
-Sjekksum.damm?(5724)          #=> true
+Sjekksum.damm(572)              #=> 4
+Sjekksum.damm!(572)             #=> 5724
+Sjekksum.damm?(5724)            #=> true
 
-Sjekksum.luhn(7992739871)     #=> 3
-Sjekksum.luhn!(7992739871)    #=> 79927398713
-Sjekksum.luhn?(79927398713)   #=> true
+Sjekksum.luhn(7992739871)       #=> 3
+Sjekksum.luhn!(7992739871)      #=> 79927398713
+Sjekksum.luhn?(79927398713)     #=> true
 
-Sjekksum.upc("03600024145")   #=> 7
-Sjekksum.upc!("03600024145")  #=> "036000241457"
-Sjekksum.upc?("03600024145")  #=> true
+Sjekksum.upc("03600024145")     #=> 7
+Sjekksum.upc!("03600024145")    #=> "036000241457"
+Sjekksum.upc?("036000241457")   #=> true
 
-Sjekksum.verhoeff(142857)     #=> 0
-Sjekksum.verhoeff?(1428570)   #=> true
-Sjekksum.verhoeff!(142857)    #=> 1428570
+Sjekksum.verhoeff(142857)       #=> 0
+Sjekksum.verhoeff!(142857)      #=> 1428570
+Sjekksum.verhoeff?(1428570)     #=> true
 
-Sjekksum.primitive(232323)    #=> 6
-Sjekksum.primitive?(2323236)  #=> true
-Sjekksum.primitive!(232323)   #=> 2323236
+Sjekksum.primitive(232323)      #=> 6
+Sjekksum.primitive!(232323)     #=> 2323236
+Sjekksum.primitive?(2323236)    #=> true
 
-Sjekksum.primitive97(23569)   #=> 0
-Sjekksum.primitive97?(235695) #=> true
-Sjekksum.primitive97!(23569)  #=> 235695
+Sjekksum.primitive97(23569)     #=> 0
+Sjekksum.primitive97!(23569)    #=> 235695
+Sjekksum.primitive97?(235695)   #=> true
 ```
 
 
