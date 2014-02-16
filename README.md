@@ -50,33 +50,37 @@ gem install sjekksum
 ```ruby
 require "sjekksum"
 
-Sjekksum.damm(572)              #=> 4
-Sjekksum.damm!(572)             #=> 5724
-Sjekksum.damm?(5724)            #=> true
+Sjekksum.damm(572)                     #=> 4
+Sjekksum.damm!(572)                    #=> 5724
+Sjekksum.damm?(5724)                   #=> true
 
-Sjekksum.isbn10("147743025")    #=> 3
-Sjekksum.isbn10!("147743025")   #=> "1477430253"
-Sjekksum.isbn10?("1477430253")  #=> true
+Sjekksum.isbn10("147743025")           #=> 3
+Sjekksum.isbn10!("147743025")          #=> "1477430253"
+Sjekksum.isbn10?("1477430253")         #=> true
 
-Sjekksum.luhn(7992739871)       #=> 3
-Sjekksum.luhn!(7992739871)      #=> 79927398713
-Sjekksum.luhn?(79927398713)     #=> true
+Sjekksum.isbn13("978-0-306-40615-")    #=> 7
+Sjekksum.isbn13!("978-0-306-40615-")   #=> "978-0-306-40615-7"
+Sjekksum.isbn13?("978-0-306-40615-7")  #=> true
 
-Sjekksum.upc("03600024145")     #=> 7
-Sjekksum.upc!("03600024145")    #=> "036000241457"
-Sjekksum.upc?("036000241457")   #=> true
+Sjekksum.luhn(7992739871)              #=> 3
+Sjekksum.luhn!(7992739871)             #=> 79927398713
+Sjekksum.luhn?(79927398713)            #=> true
 
-Sjekksum.verhoeff(142857)       #=> 0
-Sjekksum.verhoeff!(142857)      #=> 1428570
-Sjekksum.verhoeff?(1428570)     #=> true
+Sjekksum.upc("03600024145")            #=> 7
+Sjekksum.upc!("03600024145")           #=> "036000241457"
+Sjekksum.upc?("036000241457")          #=> true
 
-Sjekksum.primitive(232323)      #=> 6
-Sjekksum.primitive!(232323)     #=> 2323236
-Sjekksum.primitive?(2323236)    #=> true
+Sjekksum.verhoeff(142857)              #=> 0
+Sjekksum.verhoeff!(142857)             #=> 1428570
+Sjekksum.verhoeff?(1428570)            #=> true
 
-Sjekksum.primitive97(23569)     #=> 5
-Sjekksum.primitive97!(23569)    #=> 235695
-Sjekksum.primitive97?(235695)   #=> true
+Sjekksum.primitive(232323)             #=> 6
+Sjekksum.primitive!(232323)            #=> 2323236
+Sjekksum.primitive?(2323236)           #=> true
+
+Sjekksum.primitive97(23569)            #=> 5
+Sjekksum.primitive97!(23569)           #=> 235695
+Sjekksum.primitive97?(235695)          #=> true
 ```
 
 
