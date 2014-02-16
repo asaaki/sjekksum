@@ -70,7 +70,7 @@ Sjekksum.primitive(232323)      #=> 6
 Sjekksum.primitive!(232323)     #=> 2323236
 Sjekksum.primitive?(2323236)    #=> true
 
-Sjekksum.primitive97(23569)     #=> 0
+Sjekksum.primitive97(23569)     #=> 5
 Sjekksum.primitive97!(23569)    #=> 235695
 Sjekksum.primitive97?(235695)   #=> true
 ```
