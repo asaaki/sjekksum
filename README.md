@@ -7,7 +7,7 @@ A gem to provide some checksum algorithms like Luhn, Damm and Verhoeff.
 All used algorithms for generating and validating checksums must calculate a single check digit only.
 
 More extensive checksum algorithms like Adler-32, CRC, BSD checksum, SYSV checksum, all hash algorithms and friends are not part of this project.
-Also no advanced algorithms like IBAN and credit card number calculation can be found here due to their nature in these cases more transformations and steps have to be taken.
+
 Furthermore this gem does not allow any other input type than integers or strings of integer digits to simplify transformations here (so all extended algorithms allowing characters are not included as well).
 
 For the string inputs all non-integer bytes are thrown away:
