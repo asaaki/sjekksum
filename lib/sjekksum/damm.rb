@@ -1,8 +1,15 @@
 module Sjekksum
+  #
+  # Module for calculation and validation of Damm checksums
+  #
+  # @see http://en.wikipedia.org/wiki/Damm_algorithm Damm algorithm
+  #
   module Damm
     extend self
     extend Shared
 
+    # The totally anti-symmetric quasigroup
+    # @see http://archiv.ub.uni-marburg.de/diss/z2004/0516/pdf/dhmd.pdf [PDF] Damm, H. Michael (2004). Total anti-symmetrische Quasigruppen (Dr. rer. nat.). Philipps-Universität Marburg.
     QUASIGROUP = [
       [0, 3, 1, 7, 5, 9, 8, 6, 4, 2],
       [7, 0, 9, 2, 1, 5, 4, 8, 6, 3],
@@ -16,21 +23,51 @@ module Sjekksum
       [2, 5, 8, 1, 4, 3, 6, 7, 9, 0]
     ].freeze
 
-    def of input_value
-      raise_on_type_mismatch input_value
-      digits = input_value.to_s.chars.map(&:to_i)
+    #
+    # Calculates Damm checksum
+    #
+    # @example
+    #   Sjekksum::Damm.of(572) #=> 4
+    #
+    # @param  number [Integer] number for which the checksum should be calculated
+    #
+    # @return [Integer] calculated checksum
+    def of number
+      raise_on_type_mismatch number
+      digits = number.to_s.chars.map(&:to_i)
       digits.reduce(0){|check, digit| QUASIGROUP[check][digit] }
     end
+    alias_method :checksum, :of
 
-    def valid? input_value
-      raise_on_type_mismatch input_value
-      self.of(input_value).zero?
+    #
+    # Damm validation of provided number
+    #
+    # @example
+    #   Sjekksum::Damm.valid?(5724) #=> true
+    #
+    # @param  number [Integer] number with included checksum
+    #
+    # @return [Boolean]
+    def valid? number
+      raise_on_type_mismatch number
+      self.of(number).zero?
     end
+    alias_method :is_valid?, :valid?
 
-    def convert input_value
-      raise_on_type_mismatch input_value
-      (input_value * 10) + self.of(input_value)
+    #
+    # Transforms a number by appending the Damm checksum digit
+    #
+    # @example
+    #   Sjekksum::Damm.convert(572) #=> 5724
+    #
+    # @param  number [Integer] number without a checksum
+    #
+    # @return [Integer] final number including the checksum
+    def convert number
+      raise_on_type_mismatch number
+      (number * 10) + self.of(number)
     end
+    alias_method :transform, :convert
 
   end
 end

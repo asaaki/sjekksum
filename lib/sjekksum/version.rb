@@ -1,3 +1,4 @@
 module Sjekksum
-  VERSION = "0.0.1"
+  # Version constant
+  VERSION = "0.0.2"
 end

@@ -1,8 +1,14 @@
 module Sjekksum
+  #
+  # Module for calculation and validation of Verhoeff checksums
+  #
+  # @see http://en.wikipedia.org/wiki/Verhoeff_algorithm Verhoeff algorithm
+  #
   module Verhoeff
     extend self
     extend Shared
 
+    # Table of multiplication in the dihedral group D5
     DIHEDRAL_GROUP_D5 = [
       [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
       [ 1, 2, 3, 4, 0, 6, 7, 8, 9, 5 ],
@@ -16,6 +22,7 @@ module Sjekksum
       [ 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
     ].freeze
 
+    # The permutation table
     PERMUTATION = [
       [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
       [ 1, 5, 7, 6, 2, 8, 3, 0, 9, 4 ],
@@ -27,25 +34,57 @@ module Sjekksum
       [ 7, 0, 4, 6, 9, 1, 3, 2, 5, 8 ]
     ].freeze
 
+    # The multiplicative inverse of a digit in the dihedral group D5
     INVERSE = [ 0, 4, 3, 2, 1, 5, 6, 7, 8, 9 ].freeze
 
-    def of input_value
-      raise_on_type_mismatch input_value
-      digits = input_value.to_s.chars.map(&:to_i)
+    #
+    # Calculates Verhoeff checksum
+    #
+    # @example
+    #   Sjekksum::Verhoeff.of(142857) #=> 0
+    #
+    # @param  number [Integer] number for which the checksum should be calculated
+    #
+    # @return [Integer] calculated checksum
+    def of number
+      raise_on_type_mismatch number
+      digits = number.to_s.chars.map(&:to_i)
       INVERSE[digits.reverse_each.with_index.reduce(0) { |check, (digit, idx)|
         d_row = DIHEDRAL_GROUP_D5[check]
         d_row[ PERMUTATION[idx.next % 8][digit] ]
       }]
     end
+    alias_method :checksum, :of
 
-    def valid? input_value
-      raise_on_type_mismatch input_value
-      self.of(input_value.div(10)) == (input_value % 10)
+    #
+    # Verhoeff validation of provided number
+    #
+    # @example
+    #   Sjekksum::Verhoeff.valid?(1428570) #=> true
+    #
+    # @param  number [Integer] number with included checksum
+    #
+    # @return [Boolean]
+    def valid? number
+      raise_on_type_mismatch number
+      self.of(number.div(10)) == (number % 10)
     end
+    alias_method :is_valid?, :valid?
 
-    def convert input_value
-      raise_on_type_mismatch input_value
-      (input_value * 10) + self.of(input_value)
+    #
+    # Transforms a number by appending the Verhoeff checksum digit
+    #
+    # @example
+    #   Sjekksum::Verhoeff.convert(142857) #=> 1428570
+    #
+    # @param  number [Integer] number without a checksum
+    #
+    # @return [Integer] final number including the checksum
+    def convert number
+      raise_on_type_mismatch number
+      (number * 10) + self.of(number)
     end
+    alias_method :transform, :convert
+
   end
 end
