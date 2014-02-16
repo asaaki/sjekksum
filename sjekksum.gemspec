@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Christoph Grabo"]
   spec.email         = ["chris@dinarrr.com"]
   spec.summary       = %q{Collection of some checksum validation algorithms}
-  spec.description   = %q{A gem to provide some checksum algorithms like Damm, Luhn, UPC and Verhoeff.}
+  spec.description   = %q{A gem to provide some checksum algorithms like Damm, ISBN-10/13, Luhn, UPC and Verhoeff.}
   spec.homepage      = "https://github.com/asaaki/sjekksum"
   spec.license       = "MIT"
 
