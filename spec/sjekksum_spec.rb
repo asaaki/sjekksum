@@ -25,7 +25,7 @@ describe Sjekksum do
     end
 
     it "##{algo}?" do
-      expect(described_class.send(:"#{algo}?", final_value)).to be_true
+      expect(described_class.send(:"#{algo}?", final_value)).to be_truthy
     end
 
     it "##{algo}!" do
