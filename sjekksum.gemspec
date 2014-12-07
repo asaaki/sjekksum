@@ -1,7 +1,6 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sjekksum/version'
+require "sjekksum/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "sjekksum"
@@ -20,8 +19,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "inch"
+  spec.add_development_dependency "inch", "~> 0.5"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "pry-doc"
-  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rspec", "~> 3.1"
 end
