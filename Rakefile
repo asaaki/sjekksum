@@ -12,4 +12,19 @@ task RSpec::Core::RakeTask.new(:spec) do |t|
   t.verbose = false
 end
 
+namespace :inch do
+  desc "List all objects with there results"
+  task :list do
+    sh "inch list --all"
+  end
+
+  desc "Print stats about the documentation state"
+  task :stats do
+    sh "inch stats"
+  end
+end
+
+desc "inch documentation report (`list` and `stats`)"
+task inch: ["inch:list", "inch:stats"]
+
 task :default => :spec
