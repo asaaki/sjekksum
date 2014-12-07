@@ -1,6 +1,6 @@
 shared_examples "a checksum implementation:" do |success_spec_matrix, fail_spec_matrix|
 
-  describe :of do
+  describe "of" do
     success_spec_matrix.each do |spec_item|
       it "calculates checksum: #{spec_item[0]} => #{spec_item[1]}" do
         expect(described_class.of(spec_item[0])).to eq(spec_item[1])
@@ -14,23 +14,23 @@ shared_examples "a checksum implementation:" do |success_spec_matrix, fail_spec_
     end
   end
 
-  describe :valid? do
+  describe "valid?" do
     success_spec_matrix.each do |spec_item|
       spec_value = transform_spec_value(spec_item[0],spec_item[1])
       it "returns true for #{spec_value}" do
-        expect(described_class.valid?(spec_value)).to be_true
+        expect(described_class.valid?(spec_value)).to be_truthy
       end
     end
 
     fail_spec_matrix.each do |spec_item|
       spec_value = transform_spec_value(spec_item[0],spec_item[1])
       it "does not return true for #{spec_value}" do
-        expect(described_class.valid?(spec_value)).to_not be_true
+        expect(described_class.valid?(spec_value)).to_not be_truthy
       end
     end
   end
 
-  describe :convert do
+  describe "convert" do
     success_spec_matrix.each do |spec_item|
       spec_value = transform_spec_value(spec_item[0],spec_item[1])
       it "transforms #{spec_item[0]} to #{spec_value}" do
