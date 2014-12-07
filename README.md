@@ -1,8 +1,9 @@
 # Sjekksum
 
-[![Gem Version](https://badge.fury.io/rb/sjekksum.png)](http://badge.fury.io/rb/sjekksum)
-[![Build Status](https://travis-ci.org/asaaki/sjekksum.png?branch=master)](https://travis-ci.org/asaaki/sjekksum)
-[![Support via Gratipay](http://img.shields.io/gratipay/asaaki.svg)](https://gratipay.com/asaaki)
+[![Gem Version](https://img.shields.io/gem/v/sjekksum.png?style=flat-square)](http://rubygems.org/gems/sjekksum)
+[![Gem License](http://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](https://github.com/asaaki/sjekksum/blob/master/LICENSE)
+[![Build Status](https://img.shields.io/travis/asaaki/sjekksum/master.svg?style=flat-square)](https://travis-ci.org/asaaki/sjekksum)
+[![Support via Gratipay](http://img.shields.io/gratipay/asaaki.svg?style=flat-square)](https://gratipay.com/asaaki)
 
 A gem to provide some checksum algorithms like Damm, ISBN-10/13, Luhn, UPC and Verhoeff.
 
